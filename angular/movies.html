@@ -12,6 +12,9 @@
         <!-- angular script file -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 
+        <!-- add the lodash library to our page -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+
         <!-- our script file -->
         <script src="js/movies.js"></script>
 
@@ -23,19 +26,26 @@
             <input type="search" class="form-control" placeholder="type to filter" ng-model="query"/>
         </p>
 
+        <select class="form-control" ng-options="d as d for d in distributors" ng-model="currentDistributor">
+        </select>
+
         <table class="table">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Rating</th>
-                    <th>Gross Sales</th>
+                    <th><a ng-click="setSort('title')" href="#">Title</a></th>
+                    <th><a ng-click="setSort('ratingOrdinal')" href="#">Rating</th>
+                    <th><a ng-click="setSort('released')" href="#">Released</th>
+                    <th><a ng-click="setSort('gross')" href="#">Gross Sales</th>
                 </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="movie in movies | filter : {title: query}">
+            <tr ng-repeat="movie in movies |
+            filter : query |
+            filter : {distributor : currentDistributor} |
+            orderBy : sortCol : sortReverse">
                 <td>{{movie.title}}</td>
                 <td>{{movie.rating}}</td>
-                <td>{{movie.released | date : "MMM d"}}</td>
+                <td>{{movie.released | date : "MMM d yyyy"}}</td>
                 <td>{{movie.gross | currency}}</td>
             </tr>
             </tbody>
