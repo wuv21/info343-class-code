@@ -1,6 +1,29 @@
 
-angular.module('Movies', [])
-    .controller('MoviesController', function($scope, $http) {
+angular.module('Movies', ['ui.router'])
+    .factory('moviesJSON', function($http) {
+        return $http.get('../angular/data/movies-2014.min.json');
+    })
+    .config(function($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('list', {
+                url: '/movies',
+                templateUrl: 'views/movies-list.html',
+                controller: 'MoviesController'
+            })
+            .state('detail', {
+                url: '/movies/:index',
+                templateUrl: 'views/movies-detail.html',
+                controller: 'MovieDetailController'
+            });
+
+        $urlRouterProvider.otherwise('/movies');
+    })
+    .controller('MovieDetailController', function($scope, $stateParams, moviesJSON) {
+        moviesJSON.then(function(result) {
+            $scope.movie = result.data[$stateParams.index];
+        });
+    })
+    .controller('MoviesController', function($scope, moviesJSON) {
         var ratingsMap = {
             'Not Rated': 0,
             'G': 1,
@@ -11,15 +34,14 @@ angular.module('Movies', [])
             'X': 6
         };
 
-        $http.get('../angular/data/movies-2014.json')
-            .then(function(result) {
-                $scope.movies = result.data.map(function(movie) {
-                    movie.ratingOrdinal = ratingsMap[movie.rating];
-                    return movie;
-                });
-
-                $scope.distributors = _.uniq(_.pluck($scope.movies, 'distributor'));
+        moviesJSON.then(function(result) {
+            $scope.movies = result.data.map(function(movie) {
+                movie.ratingOrdinal = ratingsMap[movie.rating];
+                return movie;
             });
+
+            $scope.distributors = _.uniq(_.pluck($scope.movies, 'distributor'));
+        });
 
         $scope.setSort = function(propertyName) {
             if ($scope.sortCol === propertyName) {
