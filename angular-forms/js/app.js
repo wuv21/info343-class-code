@@ -50,7 +50,7 @@ angular.module('ContactsApp', ['ui.router', 'angular-uuid', 'LocalStorageModule'
         $scope.deleteContact = function() {
             var index = contacts.indexOf($scope.contact);
             contacts.splice(index, 1);
-            localStorageService.remove(storageKey, contacts);
+            localStorageService.set(storageKey, contacts);
 
             $state.go('list');
         }
