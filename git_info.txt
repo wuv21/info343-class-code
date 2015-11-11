@@ -1,0 +1,37 @@
+settings to add users
+    collaborators
+
+Clone
+
+issues tab
+    assign tasks
+
+create a new branch by:
+    git checkout -b nameOfBranch
+    do stuff
+    git add
+    git commit
+    git push origin nameOfBranch #pushes my branch onto github
+
+    go to github
+    create pull request
+    assign user if needed
+    approve
+
+To get other people's branches
+    git checkout master
+    git pull origin master
+    git checkout -b nameOfBranch
+    git merge
+
+To see what branch I'm on
+    git branch
+
+To revert to last commit
+    git revert HEAD
+
+To tag a release to the most recent commit
+    git tag -a v1.0 -m "released 1.0"
+    git push origin master
+    git push --tags
+
