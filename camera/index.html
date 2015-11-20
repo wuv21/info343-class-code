@@ -9,9 +9,20 @@
         <p>
             <video autoplay></video>
         </p>
+        <br/>
+        <p>
+            <label for="line-color-inp">Line Color:</label>
+            <input type="color" name="line-color-inp" id="line-color-inp" value="#000000">
+        </p>
         <p>
             <canvas></canvas>
         </p>
+        <p>
+            <button type="button" class="btn btn-primary" id="undo-btn">Undo last draw</button>
+            <button id="btn-snapshot">Snapshot</button>
+        </p>
+
+        <p><img src="img/snapshot.svg" alt="snapshot of canvas"/></p>
 
         <script src="js/app.js"></script>    
     </body>
