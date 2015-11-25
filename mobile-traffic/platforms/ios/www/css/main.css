@@ -1,0 +1,99 @@
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic);
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+#SDOT {
+    color: #00F;
+}
+
+#SDOT svg {
+    fill: #00F;
+    height: 1em;
+    width: 1em;
+}
+
+#WSDOT svg {
+    fill: #F00;
+    height: 1em;
+    width: 1em;
+}
+
+#WSDOT {
+    color: #F00;
+}
+
+#console {
+    width: 100%;
+    text-align: center;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding-bottom: 1em;
+    background-color: #FEFEFE;
+}
+
+#console .glyphicon {
+    font-weight: 300;
+}
+
+.input-group {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50%;
+    font-size: 14px;
+}
+
+#map {
+    height: 100%;
+}
+
+i {
+    color: #000;
+    padding-top: 1em;
+    cursor: pointer;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 20px;
+    margin-top: 0;
+    padding-top: 0.5em;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 300;
+    background-color: #EEE;
+}
+
+.popup-img img {
+    width: 250px;
+}
+
+@media(min-width: 768px) {
+    body{
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+    #console {
+        position: absolute;
+        width: 40%;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgba(256, 256, 256, 0.95);
+        z-index: 1;
+        padding-bottom: 0;
+    }
+}
