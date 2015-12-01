@@ -16,6 +16,7 @@ What can build tools automate for you?
 - Minfiying files
 - Uglifying files
 - Concatenating files
+- Linting code files
 - Modularizing files (Browserify/RequireJS)
 
 ## [Grunt](http://gruntjs.com/getting-started)
